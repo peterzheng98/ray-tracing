@@ -1,4 +1,3 @@
-import imageio
 import sys
 import numpy as np
 from PIL import Image
