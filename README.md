@@ -14,3 +14,9 @@ You should prepare:
 - Some math.
 
 Enjoy!
+
+## Environment Preparation
+Python 3(Pillow, numpy)
+
+## Stage 1: Make a simple brute force path tracer.
+- 1.1: Learn about PPM Format. (Goal: 1-demo-ppm.png)
