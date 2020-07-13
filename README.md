@@ -1,5 +1,6 @@
 # ray-tracing
 Course Work Template for MS125/MS106 PPCA 2020
+Github Action: ![rust-images](https://github.com/peterzheng98/ray-tracing/workflows/rust-images/badge.svg?branch=dev)
 
 Estimated Plan:
 - Make a glass ball with simple brute force path tracer. (Both)
