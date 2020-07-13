@@ -1,0 +1,29 @@
+name: Rust
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Clean outputs
+      run: make clean
+    - name: Build
+      run: cargo build --verbose
+    - name: Run tests
+      run: cargo run
+    - name: Get Rendered Images
+      uses: actions/upload-artifact@v2
+      with:
+        name: Image
+        path: _output_/output.png
