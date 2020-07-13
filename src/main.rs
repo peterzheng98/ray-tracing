@@ -1,28 +1,21 @@
-use std::fs::File;
-use std::io::Write;
+extern crate image;
+use image::{ImageBuffer};
 
 fn main() {
-    let mut ppm_file_result = match File::create("_output_/output.ppm"){
-        Ok(v) => {
-            println!("[*] File output.ppm created.");
-            v
-        }, 
-        Err(e) => panic!("[!] Unable to create file: {:?}", e),
-    };
-
-    let image_height: i32 = 256;
-    let image_width: i32 = 256;
-    let image_depth: i32 = 255;
-    ppm_file_result.write_all(format!("P3\n{} {}\n{}\n", image_width, image_height, image_depth).as_bytes()).expect("[!] P3 Header write failed.");
-    for j in 0..image_height {
-        for i in 0..image_width{
-            let r = (i as f64) / ((image_width - 1) as f64);
-            let g = (j as f64) / ((image_height - 1) as f64);
-            let b: f64 = 0.25;
-            let ir: i32 = (255.999 * r) as i32;
-            let ig: i32 = (255.999 * g) as i32;
-            let ib: i32 = (255.999 * b) as i32;
-            ppm_file_result.write_all(format!("{} {} {}\n", ir, ig, ib).as_bytes()).expect("[!] Write Error");
-        }
+    let image_height: u32 = 256;
+    let image_width: u32 = 256;
+    let mut imgbuf = ImageBuffer::new(image_width, image_height);
+    for (x, y, pixel) in imgbuf.enumerate_pixels_mut(){
+        let r = (x as f64) / ((image_width - 1) as f64);
+        let g = (y as f64) / ((image_height - 1) as f64);
+        let b: f64 = 0.25;
+        let ir: u8 = (255.999 * r) as u8;
+        let ig: u8 = (255.999 * g) as u8;
+        let ib: u8 = (255.999 * b) as u8;
+        *pixel = image::Rgb([ir, ig, ib]);
     }
+    match imgbuf.save("_output_/output.png"){
+        Ok(_) => println!("[*] Successfully saved to '_output_/output.png'"),
+        Err(e) => println!("[!] Failed to save into file '_output_/output.png' with error {:?}", e)
+    };
 }
