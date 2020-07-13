@@ -1,3 +1,4 @@
+_output_
 # Prerequisites
 *.d
 
@@ -202,7 +203,8 @@ fabric.properties
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -336,3 +338,12 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+
+#Added by cargo
+
+/target
+
+# The library shouldn't decide about the exact versions of 
+# its dependencies, but let the downstream crate decide.
+Cargo.lock
