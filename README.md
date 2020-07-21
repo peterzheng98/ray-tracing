@@ -22,5 +22,6 @@ Python 3(Pillow, numpy)
 
 ## Stage 1: Make a simple brute force path tracer.
 - 1.1: Learn about PPM Format. (Goal: colors.png)
-- 1.2: Render an image with whatever you want.
-- 1.3: Render an image with fireworks.
+- 1.2: vec3d.
+- 1.3: Render a clock or firework or julia set.
+- 1.4: One weekend.
